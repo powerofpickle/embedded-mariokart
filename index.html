@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+  canvas{
+    background-color: #000;
+    margin: 30px;
+    width: 480px;
+    height: 384px;
+  }
+  html{
+    height: 100%;
+  }
+  body{
+    margin: 0;
+    height: 100%;
+  }
+  .container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  </style>
+  <script>
+
+    cwraps = {};
+
+    function init(){
+      var ModuleP1_ = {
+        canvas: document.querySelector("#p1"),
+        print: function(text){
+          console.log(text);
+        }
+      };
+
+      var ModuleP2_ = {
+        canvas: document.querySelector("#p2"),
+        print: function(text){
+          console.log(text);
+        }
+      };
+
+      ModuleP1(ModuleP1_);
+      ModuleP2(ModuleP2_);
+
+      p1_update = cwraps.p1('update');
+      p1_sending_num = cwraps.p1('sending_num');
+      p1_get_sent = cwraps.p1('get_sent');
+      p1_add_receiving= cwraps.p1('add_receiving');
+      p1_render = cwraps.p1('render');
+
+      p2_update = cwraps.p2('update');
+      p2_sending_num = cwraps.p2('sending_num');
+      p2_get_sent = cwraps.p2('get_sent');
+      p2_add_receiving= cwraps.p2('add_receiving');
+      p2_render = cwraps.p2('render');
+
+      function update(){
+        p1_update();
+        p2_update();
+
+        var n = p1_sending_num();
+        for(var i = 0; i < n; i++){
+          p2_add_receiving(p1_get_sent());
+        }
+
+        n = p2_sending_num();
+        for(var i = 0; i < n; i++){
+          p1_add_receiving(p2_get_sent());
+        }
+
+      }
+
+      function render(){
+        p1_render();
+        p2_render();
+      }
+
+      window.setInterval(update, 33);
+      window.setInterval(render, 33);
+    }
+    window.addEventListener('load', init);
+
+    </script>
+
+    <script src="p1.js"></script>
+    <script src="p2.js"></script>
+</head>
+<body>
+  <div class="container">
+    <canvas id="p1"></canvas>
+    <canvas id="p2"></canvas>
+  </div>
+</body>
+</html>

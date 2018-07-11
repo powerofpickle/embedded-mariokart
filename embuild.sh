@@ -1,0 +1,1 @@
+em++ map.cpp screen.cpp sprite.cpp camera.cpp entity.cpp game.cpp input.cpp em_connection.cpp connection_handle.cpp -lGL -lGLEW -lglfw -lpthread -Dlinux -s MODULARIZE=1 -s EXPORTED_FUNCTIONS='["_update", "_render", "_sending_num", "_get_sent", "_add_receiving"]' -s USE_GLFW=3 -s LEGACY_GL_EMULATION=1 -s EXPORT_NAME="'ModuleP2'" -o p2.js
