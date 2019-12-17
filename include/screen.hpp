@@ -2,9 +2,9 @@
 #define SCREEN_H
 
 #define PRESCALE 1
-#define WIDTH (160*PRESCALE)
-#define HEIGHT (128*PRESCALE)
-#define SCALE (4/PRESCALE)
+#define WIDTH (160 * PRESCALE)
+#define HEIGHT (128 * PRESCALE)
+#define SCALE (4 / PRESCALE)
 
 #include <stdint.h>
 
@@ -18,28 +18,26 @@ extern Screen screen;
 class Screen {
 
 public:
-
 #ifdef linux
-  GLFWwindow* window;
+  GLFWwindow *window;
   GLuint tex;
   int cursor_x = 0, cursor_y = 0;
   int box_x = 0, box_y = 0;
   int box_w = 0, box_h = 0;
-  uint16_t tex_pixels[WIDTH*HEIGHT];
+  uint16_t tex_pixels[WIDTH * HEIGHT];
 #endif
 
-	uint16_t pixels[WIDTH*HEIGHT/2];
+  uint16_t pixels[WIDTH * HEIGHT / 2];
 
   int error;
 
-
   Screen();
 
-	void text(char* text);
+  void text(char *text);
 
   void render();
 
-	void set_cursor(int x, int y);
+  void set_cursor(int x, int y);
 
   void draw_box(uint16_t color, int x, int y, int w, int h);
 
@@ -47,9 +45,9 @@ public:
 
   void draw_pixel(const uint16_t &pixel);
 
-	void draw_bottom();
+  void draw_bottom();
 
-	void draw_top();
+  void draw_top();
 
   void skip_pixel();
 
@@ -58,7 +56,6 @@ public:
   bool should_exit();
 
   ~Screen();
-
 };
 
 #endif

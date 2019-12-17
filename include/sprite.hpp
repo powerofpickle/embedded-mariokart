@@ -3,18 +3,17 @@
 
 #include <stdint.h>
 
-
-class Sprite{
+class Sprite {
 public:
-  uint16_t* pixels;
+  uint16_t *pixels;
   uint8_t width, height;
-	int8_t off_x, off_y;
+  int8_t off_x, off_y;
 
-  Sprite(uint16_t* pixels, uint8_t width, uint8_t height);
-  Sprite(uint16_t* pixels, uint8_t width, uint8_t height, int8_t offx, int8_t offy);
+  Sprite(uint16_t *pixels, uint8_t width, uint8_t height);
+  Sprite(uint16_t *pixels, uint8_t width, uint8_t height, int8_t offx,
+         int8_t offy);
   void draw(int x, int y, float scale);
 };
-
 
 extern Sprite toad_sprite;
 extern Sprite toad_left_sprite;
@@ -38,7 +37,6 @@ extern Sprite lap_three_sprite;
 
 extern Sprite first_place_sprite;
 extern Sprite second_place_sprite;
-
 
 extern Sprite bullet_bill_sprite;
 extern Sprite bullet_bill_left_sprite;

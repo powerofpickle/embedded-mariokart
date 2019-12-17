@@ -9,41 +9,36 @@
 #define HOST 1
 #endif
 
-
-
-class State{
+class State {
 public:
-	static State* current_state;
-	virtual void update(){};
-	virtual void render(){};
-
+  static State *current_state;
+  virtual void update(){};
+  virtual void render(){};
 };
 
-class Waiting : public State{
-	public:
-		bool p2_ready;
-		int8_t received_map;
-		Waiting();
-		void update();
-		void render();
-
+class Waiting : public State {
+public:
+  bool p2_ready;
+  int8_t received_map;
+  Waiting();
+  void update();
+  void render();
 };
 extern Waiting waiting_state;
 
-class Menu : public State{
+class Menu : public State {
 public:
-	int current_selection;
-	Menu();
-	void update_screen();
-	void update();
-	void render();
+  int current_selection;
+  Menu();
+  void update_screen();
+  void update();
+  void render();
 };
 
-extern State* current_state;
+extern State *current_state;
 extern int num_updates;
 
 extern "C" void render();
 extern "C" void update();
-
 
 #endif
